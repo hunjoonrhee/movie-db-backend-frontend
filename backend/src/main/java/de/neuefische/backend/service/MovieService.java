@@ -32,4 +32,12 @@ public class MovieService {
                 .build();
         return movieRepository.addMovie(newMovie);
     }
+
+    public Movie getMovieById(String id) {
+        return movieRepository.getMovieById(id);
+    }
+
+    public Movie deleteMovieById(String id) {
+        return movieRepository.deleteMovieById(id);
+    }
 }
