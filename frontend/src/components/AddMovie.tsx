@@ -1,5 +1,6 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {Movie} from "../model/Movie";
+import "./AddMovie.css"
 
 type AddMovieProps = {
     addMovie:(movie:Movie)=>void
@@ -7,6 +8,7 @@ type AddMovieProps = {
 
 export default function AddMovie(props:AddMovieProps){
     const emptyMoviePlaceholder: Movie = {
+        id:"",
         title: "",
         url: "",
         year: ""
@@ -35,22 +37,25 @@ export default function AddMovie(props:AddMovieProps){
     }
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>
+        <div className={"add-card"}>
+            <form className={"form-add"} >
+                <label className={"form-label"}>
                     Titel:
                     <input className={"form-input"} name={"title"} type={"text"} value={movie.title} placeholder={"Title"} onChange={handleChange} />
                 </label>
-                <label>
+                <label className={"form-label"}>
                     URL:
                     <input className={"form-input"} name={"url"} type={"text"} value={movie.url} placeholder={"Image-URL"} onChange={handleChange} />
                 </label>
-                <label>
+                <label className={"form-label"}>
                     Year:
                     <input className={"form-input"} name={"year"} type={"text"} value={movie.year} placeholder={"Year"} onChange={handleChange} />
                 </label>
+            </form>
+            <form onSubmit={handleSubmit}>
                 <button className={"form-btn-submit"} type={"submit"}>Add</button>
             </form>
+
         </div>
     )
 }

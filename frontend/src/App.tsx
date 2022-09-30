@@ -27,12 +27,32 @@ function App() {
         .catch((error)=>console.error(error));
   }
 
+  const deleteMovie = (id:String) =>{
+    axios.delete("/api/movies/"+id)
+        .then(getAllMovies)
+  }
+
+  // const editMovie = (id:String)=>{
+  //   axios.put("/api/movies/"+id)
+  //       .
+  // }
+
+  const existMovies: boolean = movies.length>0;
   return (
     <div className="App">
       <h1> Movies </h1>
-
-        <MoviesOverview movies = {movies}/>
-        <AddMovie addMovie={addMovie}/>
+      {
+        existMovies ?
+            <div>
+              <MoviesOverview movies={movies} deleteMovie={deleteMovie}/>
+              <AddMovie addMovie={addMovie}/>
+            </div>
+        :
+        <div>
+          <p>There is no movie yet. Please add a movie.</p>
+          <AddMovie addMovie={addMovie}/>
+        </div>
+      }
 
     </div>
   );

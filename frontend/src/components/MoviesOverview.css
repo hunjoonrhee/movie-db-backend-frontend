@@ -1,7 +1,9 @@
 .movie-overview{
-    background-color: blueviolet;
+    /*background-color: blueviolet;*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-right:5%;
+    margin-left:5%;
 }
