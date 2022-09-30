@@ -15,6 +15,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -118,6 +120,49 @@ class MovieControllerTest {
 
         List<Movie> actual = movieRepository.getAllMovies();
         assertEquals(actual, List.of(movie1));
+
+
+    }
+
+    @Test
+    void updateMovie() throws Exception {
+        // GIVEN
+        Movie movie1 = new Movie("1", "harry potter", "www.harrypotter.com", "2009");
+        Movie movie2 = new Movie("2", "harry potter2", "www.harrypotter2.com", "2007");
+        movieRepository.addMovie(movie1);
+        movieRepository.addMovie(movie2);
+
+        String requestBody = """
+                {
+                "id":"1",
+                "title": "harry potter2",
+                "url": "www.harrypotter.com",
+                "year":"2009"
+                }
+        """;
+
+        String expectedJSON = """
+                {
+                "id": "1",
+                "title": "harry potter2",
+                "url": "www.harrypotter.com",
+                "year":"2009"
+                }
+        """;
+
+
+        //WHEN
+
+        mockMvc.perform(put("/api/movies/1")
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJSON));
+
+        List<Movie> actual = movieRepository.getAllMovies();
+        assertThat(actual, containsInAnyOrder(
+                new Movie("1", "harry potter2", "www.harrypotter.com", "2009"),
+                new Movie("2", "harry potter2", "www.harrypotter2.com", "2007")));
 
 
     }

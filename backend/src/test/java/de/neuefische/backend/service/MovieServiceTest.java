@@ -106,4 +106,18 @@ class MovieServiceTest {
         //THEN
         assertEquals(expectedMovie, actual);
     }
+
+    @Test
+    void updateMovie_ShouldReturn_updatedMovie(){
+        //GIVEN
+        Movie movie1 = new Movie("1","harry potter2", "harrypotter.com", "2002");
+        Movie expectedMovie = new Movie("1", "harry potter2", "harrypotter.com", "2002");
+        when(movieRepository.updateMovie(any())).thenReturn(expectedMovie);
+
+        // WHEN
+        Movie actual = movieService.updateMovie(movie1);
+
+        //THEN
+        assertEquals(expectedMovie, actual);
+    }
 }

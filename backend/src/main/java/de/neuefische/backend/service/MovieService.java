@@ -40,4 +40,8 @@ public class MovieService {
     public Movie deleteMovieById(String id) {
         return movieRepository.deleteMovieById(id);
     }
+
+    public Movie updateMovie(Movie movie) {
+        return movieRepository.updateMovie(movie);
+    }
 }
