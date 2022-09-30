@@ -20,4 +20,14 @@ public class MovieRepository {
         movies.put(movie.getId(), movie);
         return movie;
     }
+
+    public Movie getMovieById(String id) {
+        return movies.get(id);
+    }
+
+    public Movie deleteMovieById(String id) {
+        Movie deletedMovie = movies.get(id);
+        movies.remove(id);
+        return deletedMovie;
+    }
 }

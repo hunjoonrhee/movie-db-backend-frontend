@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -42,7 +43,7 @@ class MovieServiceTest {
         MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "2002");
         Movie expected = new Movie("1", "harry potter", "harrypotter.com", "2002");
         when(idService.generateId()).thenReturn("1");
-        when(movieService.addMovie(movie1)).thenReturn(
+        when(movieRepository.addMovie(any())).thenReturn(
                 Movie.builder()
                         .id("1")
                         .title(movie1.getTitle())
@@ -57,7 +58,52 @@ class MovieServiceTest {
 
         // THEN
         assertEquals(expected, actual);
+    }
 
+    @Test
+    void getMovieById_ShouldReturn_MovieByGivenId(){
+        //GIVEN
+        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "2002");
+        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "2002");
+        when(idService.generateId()).thenReturn("1");
+        when(movieService.getMovieById("1")).thenReturn(expectedMovie);
+        when(movieRepository.addMovie(any())).thenReturn(
+                Movie.builder()
+                        .id("1")
+                        .title(movie1.getTitle())
+                        .url(movie1.getUrl())
+                        .year(movie1.getYear())
+                        .build()
+        );
 
+        // WHEN
+        movieService.addMovie(movie1);
+        Movie actual = movieService.getMovieById("1");
+
+        //THEN
+
+        assertEquals(expectedMovie, actual);
+    }
+
+    @Test
+    void deleteMovieById_ShouldReturn_DeletedMovie(){
+        //GIVEN
+        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "2002");
+        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "2002");
+        when(movieService.deleteMovieById("1")).thenReturn(expectedMovie);
+        when(movieRepository.addMovie(any())).thenReturn(
+                Movie.builder()
+                        .id("1")
+                        .title(movie1.getTitle())
+                        .url(movie1.getUrl())
+                        .year(movie1.getYear())
+                        .build()
+        );
+
+        // WHEN
+        Movie actual = movieService.deleteMovieById("1");
+
+        //THEN
+        assertEquals(expectedMovie, actual);
     }
 }
