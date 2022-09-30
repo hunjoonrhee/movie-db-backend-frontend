@@ -30,4 +30,9 @@ public class MovieRepository {
         movies.remove(id);
         return deletedMovie;
     }
+
+    public Movie updateMovie(Movie movie) {
+        movies.put(movie.getId(), movie);
+        return movie;
+    }
 }
