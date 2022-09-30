@@ -14,21 +14,22 @@ public class MovieService {
     private MovieRepository movieRepository;
     private IdService idService;
     @Autowired
-    public MovieService(MovieRepository movieRepository) {
+    public MovieService(MovieRepository movieRepository, IdService idService) {
         this.movieRepository = movieRepository;
+        this.idService=idService;
     }
 
     public List<Movie> getAllMovies() {
         return movieRepository.getAllMovies();
     }
 
-    public Movie addMovie(MovieDTO newMovie) {
-        Movie movie = Movie.builder()
+    public Movie addMovie(MovieDTO movie) {
+        Movie newMovie = Movie.builder()
                 .id(idService.generateId())
-                .title(newMovie.getTitle())
-                .url(newMovie.getUrl())
-                .year(newMovie.getYear())
+                .title(movie.getTitle())
+                .url(movie.getUrl())
+                .year(movie.getYear())
                 .build();
-        return movieRepository.addMovie(movie);
+        return movieRepository.addMovie(newMovie);
     }
 }

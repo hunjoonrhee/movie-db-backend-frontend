@@ -17,6 +17,7 @@ public class MovieRepository {
     }
 
     public Movie addMovie(Movie movie) {
-        return movies.put(movie.getId(), movie);
+        movies.put(movie.getId(), movie);
+        return movie;
     }
 }
