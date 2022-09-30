@@ -1,0 +1,14 @@
+.movies-card{
+
+    display: inline-block;
+    flex-direction: row;
+    justify-content: center;
+    background-color: blue;
+
+}
+.movie-img {
+    float: left;
+    object-fit: fill;
+    width: 250px;
+    height: 350px;
+}
