@@ -7,9 +7,7 @@
     border: 2px solid #f8f5f5;
     border-radius: 5px;
     box-shadow: 1px 2px 2px rgba(1, 25, 147, 0.65);
-    margin-bottom: 30px;
-    margin-right:10px;
-    margin-left:10px;
+    margin: 3% 0% 3%;
     text-align: left;
     padding: 5px;
     background: #ffffff;
@@ -25,4 +23,11 @@
     font-family: monospace;
     font-style: italic;
     text-align: center;
+}
+.btn-delete{
+    margin-bottom: 5%;
+}
+.btn-edit{
+    display: block;
+    float: right;
 }

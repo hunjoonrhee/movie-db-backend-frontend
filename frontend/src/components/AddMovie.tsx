@@ -1,6 +1,9 @@
 import {ChangeEvent, FormEvent, useState} from "react";
 import {Movie} from "../model/Movie";
 import "./AddMovie.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import {Col, Form, Row} from "react-bootstrap";
 
 type AddMovieProps = {
     addMovie:(movie:Movie)=>void
@@ -38,22 +41,33 @@ export default function AddMovie(props:AddMovieProps){
 
     return(
         <div className={"add-card"}>
-            <form className={"form-add"} >
-                <label className={"form-label"}>
-                    Titel:
-                    <input className={"form-input"} name={"title"} type={"text"} value={movie.title} placeholder={"Title"} onChange={handleChange} />
-                </label>
-                <label className={"form-label"}>
+
+            <Row>
+                <Form.Label column="sm" lg={3}>
+                    Title:
+                </Form.Label>
+                <Col>
+                    <Form.Control size="sm" type="text" name={"title"} placeholder="Title" value={movie.title} onChange={handleChange}/>
+                </Col>
+            </Row>
+            <Row>
+                <Form.Label column="sm" lg={3}>
                     URL:
-                    <input className={"form-input"} name={"url"} type={"text"} value={movie.url} placeholder={"Image-URL"} onChange={handleChange} />
-                </label>
-                <label className={"form-label"}>
+                </Form.Label>
+                <Col>
+                    <Form.Control size="sm" type="text" name={"url"} placeholder="Image-URL" value={movie.url} onChange={handleChange}/>
+                </Col>
+            </Row>
+            <Row>
+                <Form.Label column="sm" lg={3}>
                     Year:
-                    <input className={"form-input"} name={"year"} type={"text"} value={movie.year} placeholder={"Year"} onChange={handleChange} />
-                </label>
-            </form>
+                </Form.Label>
+                <Col>
+                    <Form.Control size="sm" type="text" name={"year"} placeholder="Year" value={movie.year} onChange={handleChange}/>
+                </Col>
+            </Row>
             <form onSubmit={handleSubmit}>
-                <button className={"form-btn-submit"} type={"submit"}>Add</button>
+                <Button className={"form-btn-submit"} type={"submit"}>Add</Button>
             </form>
 
         </div>

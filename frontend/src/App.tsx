@@ -5,6 +5,9 @@ import MoviesOverview from "./components/MoviesOverview";
 import AddMovie from "./components/AddMovie";
 import axios from "axios";
 import {Movie} from "./model/Movie";
+import EditMovieModal from "./modals/EditMovieModal";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 function App() {
 
@@ -32,10 +35,9 @@ function App() {
         .then(getAllMovies)
   }
 
-  // const editMovie = (id:String)=>{
-  //   axios.put("/api/movies/"+id)
-  //       .
-  // }
+  const editMovie = (movie:Movie)=>{
+    axios.put(`/api/movies/{movie.id}`, movie)
+  }
 
   const existMovies: boolean = movies.length>0;
   return (
@@ -44,7 +46,7 @@ function App() {
       {
         existMovies ?
             <div>
-              <MoviesOverview movies={movies} deleteMovie={deleteMovie}/>
+              <MoviesOverview movies={movies} deleteMovie={deleteMovie} editMovie={editMovie}/>
               <AddMovie addMovie={addMovie}/>
             </div>
         :
@@ -52,8 +54,8 @@ function App() {
           <p>There is no movie yet. Please add a movie.</p>
           <AddMovie addMovie={addMovie}/>
         </div>
-      }
 
+      }
     </div>
   );
 }

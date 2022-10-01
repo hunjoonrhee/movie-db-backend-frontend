@@ -1,24 +1,31 @@
 import {Movie} from "../model/Movie";
 import "./MovieCard.css"
+import React, {useState} from "react";
+import Button from "react-bootstrap/Button";
+import EditMovieModal from "../modals/EditMovieModal";
 
 type MovieCardProps = {
     movie: Movie
     deleteMovie:(id:string)=>void
-    editMovie:(id:string)=>void
+    editMovie:(movie:Movie)=>void
 }
 
 export default function MovieCard(props:MovieCardProps){
 
+    const [editModalOn, setEditModalOn] = useState(false);
 
     return(
         <div className={"movie-card"}>
-            <button onClick={()=>props.deleteMovie(props.movie.id)}>X</button>
+            <>
+                <EditMovieModal show={editModalOn} onHide={()=>setEditModalOn(false)} editMovie={()=>props.editMovie(props.movie)}/>
+            </>
+            <Button className={"btn-delete"} onClick={()=>props.deleteMovie(props.movie.id)}>X</Button>
             <div>
                 <img className={"movie-img"} src={props.movie.url} height="250px"/>
                 <p className={"movie-title"}>{props.movie.title} ({props.movie.year})</p>
             </div>
-            <form onSubmit={()=>props.editMovie(props.movie.id)}>
-                <button className={"form-btn-submit"} type={"submit"}>Add</button>
+            <form>
+                <Button className={"btn-edit"} onClick={()=>setEditModalOn(true)}>Edit</Button>
             </form>
 
         </div>

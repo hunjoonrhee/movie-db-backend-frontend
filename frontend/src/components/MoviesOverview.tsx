@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard";
 type MoviesOverviewProps = {
     movies: Movie[];
     deleteMovie:(id:String)=>void
-    editMovie:(id:String)=>void
+    editMovie:(movie:Movie)=>void
 }
 
 export default function MoviesOverview(props:MoviesOverviewProps){
