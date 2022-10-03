@@ -19,20 +19,27 @@ export default function MovieDetail(props:MovieDetailProps){
         return <>Movie was not found!</>
     }
     let existTrailer:boolean = true;
-    if(movie.videoUrl===undefined){
+    if(movie.videoUrl.length===0){
         existTrailer=false
     }
-    console.log(movie.videoUrl)
-
+    console.log(existTrailer)
     return(
         <div>
             <Link to={"/"}>❮ Back</Link>
 
             <p className={"name"}>{movie.title}</p>
+            {
+                existTrailer ?
+                    <>
+                        <iframe width="1280" height="640" src={movie.videoUrl}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen></iframe>
+                    </>
+                    :
+                    <p>There is no Trailer for this movie!</p>
 
-            <iframe width="1280" height="640" src={movie.videoUrl}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen></iframe>
+            }
+
         </div>
     )
 }

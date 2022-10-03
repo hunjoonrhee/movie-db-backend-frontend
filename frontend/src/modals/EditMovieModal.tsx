@@ -37,12 +37,7 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
     const handleSubmit=(event:FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
         if(movie.title!="" && movie.url !="" && movie.year !=""){
-            // let editedMovie:Movie = {
-            //     "id": movie.id,
-            //     "title":movie.title,
-            //     "url":movie.url,
-            //     "year":movie.year
-            // }
+
             props.editMovie(movie)
         }else {
             alert("Bitte füllen Sie alle Angaben aus")
@@ -74,10 +69,10 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
                 </Row>
                 <Row>
                     <Form.Label column="sm" lg={3}>
-                        URL:
+                        Trailer:
                     </Form.Label>
                     <Col>
-                        <Form.Control size="sm" type="text" name={"url"} placeholder="Image-URL" value={movie.videoUrl} onChange={handleChange} />
+                        <Form.Control size="sm" type="text" name={"videoUrl"} placeholder="Trailer-URL" value={movie.videoUrl} onChange={handleChange} />
                     </Col>
                 </Row>
                 <Row>
@@ -90,11 +85,10 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
                 </Row>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.onHide}>
-                    Close
-                </Button>
+
                 <form onSubmit={handleSubmit}>
-                    <input type={"submit"} value={"Save Changes"}/>
+                    <input type={"button"} onClick={props.onHide} value={"Close"}/>
+                    <input className={"btn-save"} type={"submit"} value={"Save Changes"}/>
                     {/*<Button variant="primary" type="submit" onClick={props.onHide}> Save Changes </Button>*/}
                 </form>
             </Modal.Footer>

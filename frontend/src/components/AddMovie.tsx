@@ -62,7 +62,7 @@ export default function AddMovie(props:AddMovieProps){
             </Row>
             <Row>
                 <Form.Label column="sm" lg={3}>
-                    URL:
+                    Trailer:
                 </Form.Label>
                 <Col>
                     <Form.Control size="sm" type="text" name={"videoUrl"} placeholder="Trailer-URL" value={movie.videoUrl} onChange={handleChange}/>
