@@ -18,12 +18,19 @@ export default function MovieDetail(props:MovieDetailProps){
     if(movie=== undefined){
         return <>Movie was not found!</>
     }
+    let existTrailer:boolean = true;
+    if(movie.videoUrl===undefined){
+        existTrailer=false
+    }
+    console.log(movie.videoUrl)
 
     return(
-        <div >
+        <div>
             <Link to={"/"}>❮ Back</Link>
+
             <p className={"name"}>{movie.title}</p>
-            <iframe width="1280" height="640" src="https://www.youtube.com/embed/uUhB2C-DpOw"
+
+            <iframe width="1280" height="640" src={movie.videoUrl}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen></iframe>
         </div>

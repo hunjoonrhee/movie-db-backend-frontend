@@ -14,6 +14,7 @@ export default function AddMovie(props:AddMovieProps){
         id:"",
         title: "",
         url: "",
+        videoUrl:"",
         year: ""
     }
 
@@ -57,6 +58,14 @@ export default function AddMovie(props:AddMovieProps){
                 </Form.Label>
                 <Col>
                     <Form.Control size="sm" type="text" name={"url"} placeholder="Image-URL" value={movie.url} onChange={handleChange}/>
+                </Col>
+            </Row>
+            <Row>
+                <Form.Label column="sm" lg={3}>
+                    URL:
+                </Form.Label>
+                <Col>
+                    <Form.Control size="sm" type="text" name={"videoUrl"} placeholder="Trailer-URL" value={movie.videoUrl} onChange={handleChange}/>
                 </Col>
             </Row>
             <Row>

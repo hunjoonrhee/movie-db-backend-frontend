@@ -16,6 +16,7 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
         id:"",
         title: "",
         url: "",
+        videoUrl:"",
         year: ""
     }
 
@@ -69,6 +70,14 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
                     </Form.Label>
                     <Col>
                         <Form.Control size="sm" type="text" name={"url"} placeholder="Image-URL" value={movie.url} onChange={handleChange} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Form.Label column="sm" lg={3}>
+                        URL:
+                    </Form.Label>
+                    <Col>
+                        <Form.Control size="sm" type="text" name={"url"} placeholder="Image-URL" value={movie.videoUrl} onChange={handleChange} />
                     </Col>
                 </Row>
                 <Row>
