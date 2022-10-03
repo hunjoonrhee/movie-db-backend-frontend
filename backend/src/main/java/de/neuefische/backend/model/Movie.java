@@ -13,6 +13,7 @@ public class Movie {
     private String id;
     private String title;
     private String url;
+    private String videoUrl;
     private String year;
 
 }
