@@ -34,6 +34,7 @@ export default function AddMovie(props:AddMovieProps){
         event.preventDefault();
         if(movie.title!="" && movie.url !="" && movie.year !=""){
             props.addMovie(movie)
+            console.log(movie+"wird hinzugefügt!!!!!")
         }else {
             alert("Bitte füllen Sie alle Angaben aus")
         }

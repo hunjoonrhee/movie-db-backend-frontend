@@ -17,7 +17,7 @@ export default function MovieCard(props:MovieCardProps){
     return(
         <div className={"movie-card"}>
             <>
-                <EditMovieModal show={editModalOn} onHide={()=>setEditModalOn(false)} editMovie={()=>props.editMovie(props.movie)}/>
+                <EditMovieModal show={editModalOn} onHide={()=>setEditModalOn(false)} id={props.movie.id} editMovie={props.editMovie}/>
             </>
             <Button className={"btn-delete"} onClick={()=>props.deleteMovie(props.movie.id)}>X</Button>
             <div>

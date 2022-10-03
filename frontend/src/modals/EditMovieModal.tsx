@@ -8,9 +8,10 @@ import {ChangeEvent, FormEvent, useState} from "react";
 type EidtMovieModalProps = {
     show:boolean;
     onHide:()=>void;
+    id:string
     editMovie:(movie:Movie)=>void
 }
-export default function EidtMovieModal(props:EidtMovieModalProps) {
+export default function EditMovieModal(props:EidtMovieModalProps) {
     const emptyMoviePlaceholder: Movie = {
         id:"",
         title: "",
@@ -22,12 +23,11 @@ export default function EidtMovieModal(props:EidtMovieModalProps) {
 
     const handleChange=(event:ChangeEvent<HTMLInputElement>)=> {
         const inputFieldValue = event.target.value;
-        console.log(inputFieldValue)
         const inputFieldName = event.target.name;
-        console.log(inputFieldName)
         setMovie( oldMovie =>(
                 { ...oldMovie,
-                    [inputFieldName]:inputFieldValue
+                    [inputFieldName]:inputFieldValue,
+                    id:props.id
                 }
             )
         )
@@ -35,8 +35,13 @@ export default function EidtMovieModal(props:EidtMovieModalProps) {
 
     const handleSubmit=(event:FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
-
         if(movie.title!="" && movie.url !="" && movie.year !=""){
+            // let editedMovie:Movie = {
+            //     "id": movie.id,
+            //     "title":movie.title,
+            //     "url":movie.url,
+            //     "year":movie.year
+            // }
             props.editMovie(movie)
         }else {
             alert("Bitte füllen Sie alle Angaben aus")
@@ -80,7 +85,8 @@ export default function EidtMovieModal(props:EidtMovieModalProps) {
                     Close
                 </Button>
                 <form onSubmit={handleSubmit}>
-                    <Button type="submit" > Save Changes </Button>
+                    <input type={"submit"} value={"Save Changes"}/>
+                    {/*<Button variant="primary" type="submit" onClick={props.onHide}> Save Changes </Button>*/}
                 </form>
             </Modal.Footer>
         </Modal>

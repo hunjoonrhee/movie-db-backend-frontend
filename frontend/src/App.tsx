@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MoviesOverview from "./components/MoviesOverview";
@@ -8,10 +8,14 @@ import {Movie} from "./model/Movie";
 import EditMovieModal from "./modals/EditMovieModal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import MovieSearch from "./components/MovieSearch";
+import {Form} from "react-bootstrap";
 
 function App() {
 
   const [movies, setMovies] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [searchMovie, setSearchMovie] = useState("");
   useEffect(()=>{
     getAllMovies()
   }, [])
@@ -28,6 +32,7 @@ function App() {
     axios.post("/api/movies", newMovie)
         .then(getAllMovies)
         .catch((error)=>console.error(error));
+    console.log(newMovie +"ist hinzugefügt!!!")
   }
 
   const deleteMovie = (id:String) =>{
@@ -36,8 +41,20 @@ function App() {
   }
 
   const editMovie = (movie:Movie)=>{
-    axios.put(`/api/movies/{movie.id}`, movie)
+    axios.put("/api/movies/"+movie.id, movie)
+        .then(getAllMovies)
+
   }
+  const handleChange=(event:ChangeEvent<HTMLInputElement>)=> {
+    setSearchText(event.target.value);
+  }
+
+  const handleSubmit=(event:FormEvent<HTMLFormElement>)=> {
+    event.preventDefault()
+    setSearchMovie(searchText);
+  }
+
+
 
   const existMovies: boolean = movies.length>0;
   return (
@@ -46,7 +63,13 @@ function App() {
       {
         existMovies ?
             <div>
-              <MoviesOverview movies={movies} deleteMovie={deleteMovie} editMovie={editMovie}/>
+              <div className={"search-card"}>
+                <Form.Control size="sm" type="text" name={"title"} placeholder="Title" value={searchText} onChange={handleChange}/>
+                <form onSubmit={handleSubmit}>
+                  <input className={"search-btn"} type={"submit"} value={"Search"}/>
+                </form>
+              </div>
+              <MoviesOverview movies={movies} deleteMovie={deleteMovie} editMovie={editMovie} searchMovie={searchMovie}/>
               <AddMovie addMovie={addMovie}/>
             </div>
         :
