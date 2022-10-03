@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class MovieDTO {
     private String title;
     private String url;
+    private String videoUrl;
     private String year;
 }

@@ -28,6 +28,7 @@ public class MovieService {
                 .id(idService.generateId())
                 .title(movie.getTitle())
                 .url(movie.getUrl())
+                .videoUrl(movie.getVideoUrl())
                 .year(movie.getYear())
                 .build();
         return movieRepository.addMovie(newMovie);
