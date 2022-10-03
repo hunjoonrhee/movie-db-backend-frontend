@@ -24,8 +24,8 @@ class MovieServiceTest {
     @Test
     void getAllMovies_ShouldReturn_AllMoviesInRepo(){
         // GIVEN
-        Movie movie1 = new Movie("1", "harry potter", "harrypotter.com", "2002");
-        Movie movie2 = new Movie("2", "harry potter2", "harrypotter2.com", "2003");
+        Movie movie1 = new Movie("1", "harry potter", "harrypotter.com", "harrypotter.com", "2002");
+        Movie movie2 = new Movie("2", "harry potter2", "harrypotter2.com", "harrypotter2.com", "2003");
         when(movieService.getAllMovies()).thenReturn(List.of(movie1, movie2));
 
         // WHEN
@@ -40,14 +40,15 @@ class MovieServiceTest {
     void addMovie_ShouldReturn_addedMovie(){
 
         //GIVEN
-        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "2002");
-        Movie expected = new Movie("1", "harry potter", "harrypotter.com", "2002");
+        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "harrypotter.com", "2002");
+        Movie expected = new Movie("1", "harry potter", "harrypotter.com", "harrypotter.com", "2002");
         when(idService.generateId()).thenReturn("1");
         when(movieRepository.addMovie(any())).thenReturn(
                 Movie.builder()
                         .id("1")
                         .title(movie1.getTitle())
                         .url(movie1.getUrl())
+                        .videoUrl(movie1.getVideoUrl())
                         .year(movie1.getYear())
                         .build()
         );
@@ -63,8 +64,8 @@ class MovieServiceTest {
     @Test
     void getMovieById_ShouldReturn_MovieByGivenId(){
         //GIVEN
-        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "2002");
-        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "2002");
+        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "harrypotter.com", "2002");
+        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "harrypotter.com", "2002");
         when(idService.generateId()).thenReturn("1");
         when(movieService.getMovieById("1")).thenReturn(expectedMovie);
         when(movieRepository.addMovie(any())).thenReturn(
@@ -72,6 +73,7 @@ class MovieServiceTest {
                         .id("1")
                         .title(movie1.getTitle())
                         .url(movie1.getUrl())
+                        .videoUrl(movie1.getVideoUrl())
                         .year(movie1.getYear())
                         .build()
         );
@@ -88,14 +90,15 @@ class MovieServiceTest {
     @Test
     void deleteMovieById_ShouldReturn_DeletedMovie(){
         //GIVEN
-        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "2002");
-        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "2002");
+        MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "harrypotter.com", "2002");
+        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "harrypotter.com", "2002");
         when(movieService.deleteMovieById("1")).thenReturn(expectedMovie);
         when(movieRepository.addMovie(any())).thenReturn(
                 Movie.builder()
                         .id("1")
                         .title(movie1.getTitle())
                         .url(movie1.getUrl())
+                        .videoUrl(movie1.getVideoUrl())
                         .year(movie1.getYear())
                         .build()
         );
@@ -110,8 +113,8 @@ class MovieServiceTest {
     @Test
     void updateMovie_ShouldReturn_updatedMovie(){
         //GIVEN
-        Movie movie1 = new Movie("1","harry potter2", "harrypotter.com", "2002");
-        Movie expectedMovie = new Movie("1", "harry potter2", "harrypotter.com", "2002");
+        Movie movie1 = new Movie("1","harry potter2", "harrypotter.com", "harrypotter.com", "2002");
+        Movie expectedMovie = new Movie("1", "harry potter2", "harrypotter.com", "harrypotter.com", "2002");
         when(movieRepository.updateMovie(any())).thenReturn(expectedMovie);
 
         // WHEN
