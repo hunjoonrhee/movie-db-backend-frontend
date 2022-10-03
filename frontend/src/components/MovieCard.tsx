@@ -3,6 +3,7 @@ import "./MovieCard.css"
 import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import EditMovieModal from "../modals/EditMovieModal";
+import {Link} from "react-router-dom";
 
 type MovieCardProps = {
     movie: Movie
@@ -21,7 +22,9 @@ export default function MovieCard(props:MovieCardProps){
             </>
             <Button className={"btn-delete"} onClick={()=>props.deleteMovie(props.movie.id)}>X</Button>
             <div>
-                <img className={"movie-img"} src={props.movie.url} height="250px"/>
+                <Link to={"/"+ props.movie.id}>
+                    <img className={"movie-img"} src={props.movie.url} height="250px"/>
+                </Link>
                 <p className={"movie-title"}>{props.movie.title} ({props.movie.year})</p>
             </div>
             <form>
