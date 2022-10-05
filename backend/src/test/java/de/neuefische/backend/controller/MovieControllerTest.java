@@ -76,8 +76,8 @@ class MovieControllerTest {
     @Test
     void getAllMovie() throws Exception {
         // GIVEN
-        movieRepository.addMovie(new Movie("1", "harry potter", "www.harrypotter.com", "www.harrypotter.com", "2009"));
-        movieRepository.addMovie(new Movie("2", "harry potter2", "www.harrypotter2.com", "www.harrypotter2.com", "2007"));
+        movieRepository.save(new Movie("1", "harry potter", "www.harrypotter.com", "www.harrypotter.com", "2009"));
+        movieRepository.save(new Movie("2", "harry potter2", "www.harrypotter2.com", "www.harrypotter2.com", "2007"));
 
         String expectedJSON = """
                 [
@@ -113,16 +113,16 @@ class MovieControllerTest {
         // GIVEN
         Movie movie1 = new Movie("1", "harry potter", "www.harrypotter.com", "www.harrypotter.com", "2009");
         Movie movie2 = new Movie("2", "harry potter2", "www.harrypotter2.com", "www.harrypotter2.com", "2007");
-        movieRepository.addMovie(movie1);
-        movieRepository.addMovie(movie2);
-        movieRepository.deleteMovieById("2");
+        movieRepository.save(movie1);
+        movieRepository.save(movie2);
+        movieRepository.deleteById("2");
 
 
         //WHEN
 
         mockMvc.perform(delete("/api/movies/2"));
 
-        List<Movie> actual = movieRepository.getAllMovies();
+        List<Movie> actual = movieRepository.findAll();
         assertEquals(actual, List.of(movie1));
 
 
@@ -133,8 +133,8 @@ class MovieControllerTest {
         // GIVEN
         Movie movie1 = new Movie("1", "harry potter", "www.harrypotter.com","www.harrypotter.com", "2009");
         Movie movie2 = new Movie("2", "harry potter2", "www.harrypotter2.com","www.harrypotter2.com", "2007");
-        movieRepository.addMovie(movie1);
-        movieRepository.addMovie(movie2);
+        movieRepository.save(movie1);
+        movieRepository.save(movie2);
 
         String requestBody = """
                 {
@@ -165,7 +165,7 @@ class MovieControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedJSON));
 
-        List<Movie> actual = movieRepository.getAllMovies();
+        List<Movie> actual = movieRepository.findAll();
         assertThat(actual, containsInAnyOrder(
                 new Movie("1", "harry potter2", "www.harrypotter.com", "www.harrypotter.com", "2009"),
                 new Movie("2", "harry potter2", "www.harrypotter2.com", "www.harrypotter2.com", "2007")));
