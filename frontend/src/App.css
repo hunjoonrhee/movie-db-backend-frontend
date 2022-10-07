@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.search-card{
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  margin: 2% auto;
+}
+
+.search-btn{
+  margin-left: 15%
+}
