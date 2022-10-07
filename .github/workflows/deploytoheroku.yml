@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-backend
     env:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }} //65fd9763-41a9-4c1e-81c8-eb878221b688
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v2
