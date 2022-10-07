@@ -32,6 +32,7 @@ export default function MovieDetail(props:MovieDetailProps){
                 existTrailer ?
                     <>
                         <iframe width="1280" height="640" src={movie.videoUrl}
+                                title={"Trailer"}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen></iframe>
                     </>

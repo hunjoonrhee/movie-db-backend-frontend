@@ -1,14 +1,7 @@
-import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import MoviesOverview from "./components/MoviesOverview";
 import AddMovie from "./components/AddMovie";
-import axios from "axios";
-import {Movie} from "./model/Movie";
-import EditMovieModal from "./modals/EditMovieModal";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
-import MovieSearch from "./components/MovieSearch";
 import {Form} from "react-bootstrap";
 import useMovies from "./hooks/useMovies";
 import {HashRouter, Route, Routes} from "react-router-dom";

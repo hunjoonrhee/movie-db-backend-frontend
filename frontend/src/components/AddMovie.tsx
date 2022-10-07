@@ -33,7 +33,7 @@ export default function AddMovie(props:AddMovieProps){
 
     const handleSubmit=(event:FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
-        if(movie.title!="" && movie.url !="" && movie.year !=""){
+        if(movie.title!=="" && movie.url !=="" && movie.year !==""){
             props.addMovie(movie)
             console.log(movie+"wird hinzugefügt!!!!!")
         }else {

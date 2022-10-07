@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Form, Row} from "react-bootstrap";
@@ -36,7 +35,7 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
 
     const handleSubmit=(event:FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
-        if(movie.title!="" && movie.url !="" && movie.year !=""){
+        if(movie.title!=="" && movie.url !=="" && movie.year !==""){
 
             props.editMovie(movie)
         }else {
@@ -89,7 +88,6 @@ export default function EditMovieModal(props:EidtMovieModalProps) {
                 <form onSubmit={handleSubmit}>
                     <input type={"button"} onClick={props.onHide} value={"Close"}/>
                     <input className={"btn-save"} type={"submit"} value={"Save Changes"}/>
-                    {/*<Button variant="primary" type="submit" onClick={props.onHide}> Save Changes </Button>*/}
                 </form>
             </Modal.Footer>
         </Modal>

@@ -23,7 +23,7 @@ export default function MovieCard(props:MovieCardProps){
             <Button className={"btn-delete"} onClick={()=>props.deleteMovie(props.movie.id)}>X</Button>
             <div>
                 <Link to={"/"+ props.movie.id}>
-                    <img className={"movie-img"} src={props.movie.url} height="250px"/>
+                    <img className={"movie-img"} src={props.movie.url} height="250px" alt={"movie-img"}/>
                 </Link>
                 <p className={"movie-title"}>{props.movie.title} ({props.movie.year})</p>
             </div>
