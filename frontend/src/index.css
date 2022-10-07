@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://www.teahub.io/photos/full/18-180656_1920x1080-movie-making-wallpaper-movie-film-video-film.jpg");
+  background-position: center;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {

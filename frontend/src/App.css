@@ -1,6 +1,10 @@
 .App {
   text-align: center;
-  background-image: url("https://img.freepik.com/free-vector/cinematograph-concept-background-design-with-popcorn-3d-glasses_260559-142.jpg?w=2000");
+  /*background-image: url("https://png.pngtree.com/background/20210711/original/pngtree-blue-technology-film-background-picture-image_1168565.jpg");*/
+  /*background-position: center;*/
+  /*height: 100%;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
   font-family: monospace;
 }
 .website-title{

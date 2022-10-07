@@ -12,38 +12,41 @@ function App() {
     addMovie, deleteMovie, editMovie, handleChange, handleSubmit, existMovies} = useMovies()
 
   return (
-    <header className="App">
-      <h1 className={"website-title"}> Movies </h1>
-      {
-        existMovies ?
-            <HashRouter>
-              <Routes>
-                <Route path={"/"} element={
-                  <div>
-                    <div className={"search-card"}>
-                      <Form.Control size="sm" type="text" name={"title"} placeholder="Title" value={searchText} onChange={handleChange}/>
-                      <form onSubmit={handleSubmit}>
-                        <input className={"search-btn"} type={"submit"} value={"Search"}/>
-                      </form>
-                    </div>
-                    <MoviesOverview movies={movies} deleteMovie={deleteMovie} editMovie={editMovie} searchMovie={searchMovie}/>
-                    <AddMovie addMovie={addMovie}/>
-                  </div>
-                }/>
-                <Route path={"/:id"} element={<MovieDetail movies={movies}/>}/>
+      <div className="App">
+        <header>
+          <h1 className={"website-title"}> Movies </h1>
+          {
+            existMovies ?
+                <HashRouter>
+                  <Routes>
+                    <Route path={"/"} element={
+                      <div>
+                        <div className={"search-card"}>
+                          <Form.Control size="sm" type="text" name={"title"} placeholder="Title" value={searchText} onChange={handleChange}/>
+                          <form onSubmit={handleSubmit}>
+                            <input className={"search-btn"} type={"submit"} value={"Search"}/>
+                          </form>
+                        </div>
+                        <MoviesOverview movies={movies} deleteMovie={deleteMovie} editMovie={editMovie} searchMovie={searchMovie}/>
+                        <AddMovie addMovie={addMovie}/>
+                      </div>
+                    }/>
+                    <Route path={"/:id"} element={<MovieDetail movies={movies}/>}/>
 
-              </Routes>
-            </HashRouter>
+                  </Routes>
+                </HashRouter>
 
 
-        :
-        <div>
-          <p>There is no movie yet. Please add a movie.</p>
-          <AddMovie addMovie={addMovie}/>
-        </div>
+                :
+                <div>
+                  <p>There is no movie yet. Please add a movie.</p>
+                  <AddMovie addMovie={addMovie}/>
+                </div>
 
-      }
-    </header>
+          }
+        </header>
+      </div>
+
   );
 }
 
