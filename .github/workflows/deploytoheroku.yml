@@ -57,6 +57,6 @@ jobs:
       - name: Login to Heroku
         run: heroku container:login
       - name: Push Docker Image
-        run: heroku container:push web -a moviedb
+        run: heroku container:push web -a my-favorite-movie-db
       - name: Release Docker Container
-        run: heroku container:release web -a moviedb
+        run: heroku container:release web -a my-favorite-movie-db
