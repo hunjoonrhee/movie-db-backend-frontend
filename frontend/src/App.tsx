@@ -12,7 +12,7 @@ function App() {
     addMovie, deleteMovie, editMovie, handleChange, handleSubmit, existMovies} = useMovies()
 
   return (
-    <div className="App">
+    <div className="App-header">
       <h1> Movies </h1>
       {
         existMovies ?
