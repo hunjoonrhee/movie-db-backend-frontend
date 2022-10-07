@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  background-image: url("https://img.freepik.com/free-vector/cinematograph-concept-background-design-with-popcorn-3d-glasses_260559-142.jpg?w=2000");
+  font-family: monospace;
+}
+.website-title{
+  color: darkblue;
+  font-weight: bolder;
+  font-size: 50px;
+  font-style: italic;
 }
 
 .App-logo {
@@ -15,7 +23,6 @@
 
 .App-header {
   /*background-color: #282c34;*/
-  background-image: url("https://img.freepik.com/free-vector/cinematograph-concept-background-design-with-popcorn-3d-glasses_260559-142.jpg?w=2000");
   min-height: 100vh;
   display: flex;
   flex-direction: column;

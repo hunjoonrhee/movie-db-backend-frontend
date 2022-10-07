@@ -12,8 +12,8 @@ function App() {
     addMovie, deleteMovie, editMovie, handleChange, handleSubmit, existMovies} = useMovies()
 
   return (
-    <div className="App-header">
-      <h1> Movies </h1>
+    <header className="App">
+      <h1 className={"website-title"}> Movies </h1>
       {
         existMovies ?
             <HashRouter>
@@ -43,7 +43,7 @@ function App() {
         </div>
 
       }
-    </div>
+    </header>
   );
 }
 
