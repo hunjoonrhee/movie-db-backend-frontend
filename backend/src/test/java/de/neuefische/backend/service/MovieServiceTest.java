@@ -66,9 +66,9 @@ class MovieServiceTest {
     void getMovieById_ShouldReturn_MovieByGivenId(){
         //GIVEN
         MovieDTO movie1 = new MovieDTO("harry potter", "harrypotter.com", "harrypotter.com", "2002");
-        Optional<Movie> expectedMovie = Optional.of(new Movie("1", "harry potter", "harrypotter.com", "harrypotter.com", "2002"));
+        Movie expectedMovie = new Movie("1", "harry potter", "harrypotter.com", "harrypotter.com", "2002");
         when(idService.generateId()).thenReturn("1");
-        when(movieRepository.findById("1")).thenReturn(expectedMovie);
+        when(movieRepository.findById("1")).thenReturn(Optional.of(expectedMovie));
         when(movieRepository.save(any())).thenReturn(
                 Movie.builder()
                         .id("1")
@@ -81,7 +81,7 @@ class MovieServiceTest {
 
         // WHEN
         movieService.addMovie(movie1);
-        Optional<Movie> actual = movieService.getMovieById("1");
+        Movie actual = movieService.getMovieById("1");
 
         //THEN
 
