@@ -81,7 +81,7 @@ class MovieServiceTest {
 
         // WHEN
         movieService.addMovie(movie1);
-        Optional<Movie> actual = movieService.getMovieById("1");
+        Movie actual = movieService.getMovieById("1");
 
         //THEN
 
